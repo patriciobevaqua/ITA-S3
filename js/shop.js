@@ -1,6 +1,6 @@
 // If you have time, you can move this variable "products" to a json file and load the data in this js. It will look more professional
 var products = [
-   {
+    {
         id: 1,
         name: 'cooking oil',
         price: 10.5,
@@ -63,6 +63,20 @@ var products = [
         type: 'clothes'
     }
 ]
+
+//Obtengo información del archivo products.json
+// var xhttp = new XMLHttpRequest();
+// xhttp.onreadystatechange = function () {
+//     if (this.readyState == 4 && this.status == 200) {
+//         // Typical action to be performed when the document is ready:
+//         var products []= JSON.parse(xhttp.responseText);
+//         //document.getElementById("demo").innerHTML = xhttp.responseText;
+//     } // fin del if
+// };  // fin de function
+// xhttp.open("GET", "products.json", true);
+// xhttp.send();
+
+
 // Array with products (objects) added directly with push(). Products in this array are repeated.
 var cartList = [];
 
@@ -75,6 +89,17 @@ var total = 0;
 function buy(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
+
+    products.forEach((product) => {
+        if (id === product.id) {
+
+            cartList.push(product);
+        }
+    })
+
+    console.log('cartList : ', cartList);
+    // console.log('probando función buy');
+
 }
 
 // Exercise 2
@@ -120,6 +145,6 @@ function printCart() {
 }
 
 
-function open_modal(){
-	console.log("Open Modal");
+function open_modal() {
+    console.log("Open Modal");
 }
