@@ -97,7 +97,8 @@ function buy(id) {
         }
     })
 
-    console.log('cartList : ', cartList);
+    console.log('cartList: ', cartList);
+    calculateTotal(cartList); // -> Adiciono Función para calcular el total del carrito (creada en el ejercicio 3)
     // console.log('probando función buy');
 
 }
@@ -108,19 +109,32 @@ function cleanCart() {
     products.forEach((product) => {
         if (cartList.length !== 0) {
             cartList.pop();
-            // console.log('elemento borrado : ', product.id);  (-> línea de código para testeo)
-            // console.log('cartList : ', cartList);            (-> línea de código para testeo)
+            // console.log('elemento borrado : ', product.id);  //(-> línea de código para testeo)
+            // console.log('cartList : ', cartList);            //(-> línea de código para testeo)
         }
     })
     
     // cartList.length = 0   (-> sería otra solución posible a la anterior)
-    console.log('cartList : ', cartList);
-    // console.log('probando función limpiar carrito');
+    console.log('cartList: ', cartList);
+    // console.log('probando función limpiar carrito');         //(-> línea de código para testeo)
 }
 
 // Exercise 3
-function calculateTotal() {
+function calculateTotal(cartList) {
     // Calculate total price of the cart using the "cartList" array
+    total = 0; // -> Inicialización de la variable total
+    i=1; // -> Inicialización de la variable i
+    cartList.forEach((cart) => {
+        total += cart.price;      
+        console.log('Suma parcial',i++,':',total);   //muestra por consola suma parcial //(-> línea de código para testeo)
+    })
+
+    console.log('Suma Total:     ',total);         //muestra por consola suma total //(-> línea de código para testeo)
+    // console.log('probando función calcular total');         //(-> línea de código para testeo)
+
+
+
+
 }
 
 // Exercise 4
