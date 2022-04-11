@@ -104,7 +104,18 @@ function buy(id) {
 
 // Exercise 2
 function cleanCart() {
-
+    // Itera dentro del array borrando los datos de cada elemento
+    products.forEach((product) => {
+        if (cartList.length !== 0) {
+            cartList.pop();
+            // console.log('elemento borrado : ', product.id);  (-> línea de código para testeo)
+            // console.log('cartList : ', cartList);            (-> línea de código para testeo)
+        }
+    })
+    
+    // cartList.length = 0   (-> sería otra solución posible a la anterior)
+    console.log('cartList : ', cartList);
+    // console.log('probando función limpiar carrito');
 }
 
 // Exercise 3
