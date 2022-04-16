@@ -99,6 +99,7 @@ function buy(id) {
 
     console.log('cartList: ', cartList);
     calculateTotal(cartList); // -> Adiciono Función para calcular el total del carrito (creada en el ejercicio 3)
+    generateCart(); // -> Adiciono Función para generar el carrito (creada en el ejercicio 4)
     // console.log('probando función buy');
 
 }
@@ -113,7 +114,7 @@ function cleanCart() {
             // console.log('cartList : ', cartList);            //(-> línea de código para testeo)
         }
     })
-    
+
     // cartList.length = 0   (-> sería otra solución posible a la anterior)
     console.log('cartList: ', cartList);
     // console.log('probando función limpiar carrito');         //(-> línea de código para testeo)
@@ -123,13 +124,13 @@ function cleanCart() {
 function calculateTotal(cartList) {
     // Calculate total price of the cart using the "cartList" array
     total = 0; // -> Inicialización de la variable total
-    i=1; // -> Inicialización de la variable i
-    cartList.forEach((cart) => {
-        total += cart.price;      
-        console.log('Suma parcial',i++,':',total);   //muestra por consola suma parcial //(-> línea de código para testeo)
+    i = 1; // -> Inicialización de la variable i
+    cartList.forEach((cartProduct) => {
+        total += cartProduct.price;
+        //console.log('Suma parcial', i++, ':', total);   //muestra por consola suma parcial //(-> línea de código para testeo)
     })
 
-    console.log('Suma Total:     ',total);         //muestra por consola suma total //(-> línea de código para testeo)
+    console.log('Suma Total:     ', total);         //muestra por consola suma total //(-> línea de código para testeo)
     // console.log('probando función calcular total');         //(-> línea de código para testeo)
 
 
@@ -141,6 +142,33 @@ function calculateTotal(cartList) {
 function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+    var counter = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0];
+    let newElement = true;
+    for (let i = 0; i < cartList.length; i++) {
+        newElement = true;
+
+        let lengthCart = cart.length;
+
+        for (let j = 0; j < lengthCart; j++) {
+
+            if (cart[j].id === cartList[i].id) {
+                counter[j] = counter[j] + 1;
+                cart[j].quantity = counter[j];
+                newElement = false;
+            }
+
+        }
+        if (newElement == true) {
+            cart.push(cartList[i]);
+            cart[lengthCart].quantity = 1;
+        }
+
+
+    }
+
+    console.log('cart: ', cart);
+
+
 }
 
 // Exercise 5
