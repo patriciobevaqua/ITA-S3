@@ -142,7 +142,7 @@ function calculateTotal(cartList) {
 function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
-    var counter = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0];
+    var counter = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     let newElement = true;
     for (let i = 0; i < cartList.length; i++) {
         newElement = true;
@@ -168,12 +168,41 @@ function generateCart() {
 
     console.log('cart: ', cart);
 
+    applyPromotionsCart();
+
 
 }
 
 // Exercise 5
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+    const lengthCart = cart.length;
+
+    for (let i = 0; i < lengthCart; i++) {
+
+        if ((cart[i].id === 1) && (cart[i].quantity >= 3)) {
+            cart[i].price = cart[i].price * (1-cart[i].offer.percent / 100);
+            cart[i].subtotalWithDiscount = Math.round(cart[i].price * cart[i].quantity);
+        } else if (cart[i].id === 1) {
+            cart[i].price = cart[i].price;
+            cart[i].subtotalWithDiscount = cart[i].price * cart[i].quantity;
+        }
+
+        if ((cart[i].id === 3) && (cart[i].quantity >= 10)) {
+
+            cart[i].price = cart[i].price * (1-cart[i].offer.percent / 100);
+            cart[i].subtotalWithDiscount = Math.round(cart[i].price * cart[i].quantity);
+        } else if (cart[i].id === 3) {
+            cart[i].price = cart[i].price;
+            cart[i].subtotalWithDiscount = cart[i].price * cart[i].quantity;
+        }
+    }
+
+    console.log('cart with promos : ', cart);
+
+
+
+
 }
 
 
