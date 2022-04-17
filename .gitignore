@@ -1,0 +1,6 @@
+# Código gitignore para evitar procesar los directorios de las dependencias
+
+
+js/products.json
+
+
